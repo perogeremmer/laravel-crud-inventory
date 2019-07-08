@@ -6,6 +6,9 @@
             <div class="col-md-3 mb-3">
                 <a href="{{ route('product.create') }}" class="btn btn-md btn-dark">Add Product</a>
             </div>
+            <div class="col-md-3 mb-3">
+                <a href="{{ route('product.statistic') }}" class="btn btn-md btn-primary">Statistic Report</a>
+            </div>
             <div class="col-md-12">
                 <table class="table table-striped table-hover">
                     <thead>

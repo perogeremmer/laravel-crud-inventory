@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\CategoryModel;
 use App\ProductModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
@@ -106,5 +107,19 @@ class ProductController extends Controller
         $product->delete();
 
         return redirect()->route('product.index');
+    }
+
+    public function statistic(Request $request){
+        return view('products.statistic');
+    }
+
+    public function statisticApi(Request $request){
+        $data = DB::table('products')
+            ->join('category', 'category.id', 'products.category_id')
+            ->selectRaw('count(products.category_id) as total, category.name')
+            ->groupBy('category.id')
+            ->get();
+
+        return response()->json(['values' => $data]);
     }
 }
