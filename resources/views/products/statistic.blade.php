@@ -9,8 +9,8 @@
             <div class="col-md-3"></div>
             <div class="col-md-6">
                 <h3 class="mb-3">Statistic of Products</h3>
-                <div class="card p-5">
-                    <canvas id="myChart" width="300" height="200"></canvas>
+                <div class="card">
+                    <canvas id="myChart" width="200" height="200"></canvas>
                 </div>
             </div>
             <div class="col-md-3"></div>

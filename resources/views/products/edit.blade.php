@@ -7,6 +7,15 @@
                 <h4>Form Create Product</h4>
             </div>
             <div class="col-md-6">
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                 <form action="{{ route('product.update', $product->id) }}" method="post">
                     {{ method_field('PUT') }}
                     {{ csrf_field() }}
@@ -25,15 +34,15 @@
                     </div>
                     <div class="form-group">
                         <label>Qty:</label>
-                        <input class="form-control" name="qty" type="number" value="{{ $product->qty }}"/>
+                        <input class="form-control" name="quantity" type="number" value="{{ $product->qty }}"/>
                     </div>
                     <div class="form-group">
                         <label>Buy Price:</label>
-                        <input class="form-control" name="bp" type="number" value="{{ $product->buy_price }}"/>
+                        <input class="form-control" name="buy_price" type="number" value="{{ $product->buy_price }}"/>
                     </div>
                     <div class="form-group">
                         <label>Sell Price:</label>
-                        <input class="form-control" name="sp" type="number" value="{{ $product->sell_price }}"/>
+                        <input class="form-control" name="sell_price" type="number" value="{{ $product->sell_price }}"/>
                     </div>
                     <div class="form-group">
                         <button class="btn btn-md btn-primary" type="submit">Submit</button>

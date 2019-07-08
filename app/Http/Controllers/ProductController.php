@@ -39,12 +39,19 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        $validatedData = $request->validate([
+            'name' => 'required',
+            'quantity' => 'required',
+            'buy_price' => 'required',
+            'sell_price' => 'required',
+        ]);
+
         $product = new ProductModel();
         $product->name = $request->name;
         $product->category_id = $request->cat;
-        $product->qty = $request->qty;
-        $product->buy_price = $request->bp;
-        $product->sell_price = $request->sp;
+        $product->qty = $request->quantity;
+        $product->buy_price = $request->buy_price;
+        $product->sell_price = $request->sell_price;
         $product->save();
 
         return redirect()->route('product.index');
@@ -84,12 +91,19 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $validatedData = $request->validate([
+            'name' => 'required',
+            'quantity' => 'required',
+            'buy_price' => 'required',
+            'sell_price' => 'required',
+        ]);
+
         $product = ProductModel::where('id', $id)->first();
         $product->name = $request->name;
         $product->category_id = $request->cat;
-        $product->qty = $request->qty;
-        $product->buy_price = $request->bp;
-        $product->sell_price = $request->sp;
+        $product->qty = $request->quantity;
+        $product->buy_price = $request->buy_price;
+        $product->sell_price = $request->sell_price;
         $product->save();
 
         return redirect()->route('product.index');
